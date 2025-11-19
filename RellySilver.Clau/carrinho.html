@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Relly Silver</title>
+    <link rel="stylesheet" href="carrinho.css">
+
+    </head>
+<body>
+    <header>
+        <div class="top-bar">
+            ✨ Frete Grátis para compras acima de R$ 500 | Parcele em até 12x sem juros
+        </div>
+        <nav>
+            <div class="logo" onclick="window.location.href='index.html'">RELLY SILVER</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#colecoes">Coleções</a></li>
+                <li><a href="index.html#produtos">Produtos</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn" id="searchBtn">🔍</button>
+                <button class="icon-btn" id="cartBtn">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Início</a> / <span>Carrinho de Compras</span>
+    </div>
+
+    <div class="cart-container">
+        <div class="cart-items">
+            <div class="cart-header">
+                <h1>Meu Carrinho</h1>
+                <button class="clear-cart" id="clearCart">🗑️ Limpar Carrinho</button>
+            </div>
+            <div id="cartItemsList">
+                <!-- Items will be loaded here by JavaScript -->
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2 class="summary-title">Resumo do Pedido</h2>
+            
+            <div class="summary-row">
+                <span>Subtotal (<span id="itemCount">0</span> itens)</span>
+                <span id="subtotal">R$ 0,00</span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Frete</span>
+                <span id="shipping">Grátis</span>
+            </div>
+            
+            <div class="summary-row" id="discountRow" style="display: none;">
+                <span>Desconto</span>
+                <span id="discount" style="color: var(--green);">- R$ 0,00</span>
+            </div>
+
+            <div class="discount-code">
+                <h4>Cupom de Desconto</h4>
+                <div class="discount-input">
+                    <input type="text" id="couponInput" placeholder="Digite o cupom">
+                    <button onclick="applyCoupon()">Aplicar</button>
+                </div>
+            </div>
+            
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="total">R$ 0,00</span>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">Finalizar Compra</button>
+            <a href="index.html#produtos" class="continue-shopping">Continuar Comprando</a>
+
+            <div class="security-badges">
+                <div class="badge">
+                    <div class="badge-icon">🔒</div>
+                    <div>Compra Segura</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">🚚</div>
+                    <div>Entrega Rápida</div>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">↩️</div>
+                    <div>Troca Grátis</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="suggested-products">
+        <h2 class="suggested-title">Você Também Pode Gostar</h2>
+        <div class="product-carousel" id="suggestedProducts"></div>
+    </div>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Relly Silver</h3>
+                <p>Joalheria de luxo com tradição e qualidade desde 1993.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (11) 3456-7890</p>
+                <p>📧 contato@rellysilver.com.br</p>
+                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <a href="#">Segunda a Sexta: 9h às 18h</a>
+                <a href="#">Sábado: 10h às 16h</a>
+                <a href="#">Whatsapp: (11) 98765-4321</a>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">Formas de Pagamento</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Relly Silver. Todos os direitos reservados.</p>
+        </div>
+    </footer>
