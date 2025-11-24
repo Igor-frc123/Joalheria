@@ -411,5 +411,36 @@
         }
 
 
+.produtos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.produto-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+    padding-bottom: 20px;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+}
+
+.produto-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.categoria-title {
+    text-align: center;
+    margin: 40px 0 10px;
+    font-size: 2.4rem;
+}
 
 
