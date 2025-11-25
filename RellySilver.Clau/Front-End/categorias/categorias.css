@@ -195,3 +195,29 @@ body {
         height: 280px;
     }
 }
+
+.btn-detalhes {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 16px;
+    background: linear-gradient(135deg, #c18e3f, #d4a574);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(193, 142, 63, 0.3);
+    text-decoration: none;
+}
+
+.btn-detalhes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 142, 63, 0.4);
+}
+
