@@ -638,9 +638,3 @@ section {
   -webkit-tap-highlight-color: transparent;
   pointer-events: auto;
 }
-
-/* segurança adicional: qualquer overlay visível (debug) */
-/* descomente durante debug para ver área do header: */
-/*
-header { outline: 2px dashed rgba(193,142,63,0.25); }
-*/
