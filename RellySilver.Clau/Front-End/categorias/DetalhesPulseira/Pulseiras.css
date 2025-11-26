@@ -330,7 +330,6 @@ nav {
     padding: 18px;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: var(--white);
-    border: none;
     font-size: 17px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -340,7 +339,13 @@ nav {
     transition: all 0.3s;
     margin-bottom: 30px;
     box-shadow: 0 5px 15px rgba(193, 142, 63, 0.3);
+    text-align: center;
+
+    border: none; /* ok */
+    text-decoration: none; /* ESSENCIAL para link */
+    display: block; /* ESSENCIAL para link virar botão */
 }
+
 
 .btn-adicionar:hover {
     transform: translateY(-3px);
@@ -586,3 +591,56 @@ footer {
         font-size: 28px;
     }
 }
+
+header, nav, .top-bar {
+    position: relative;
+    z-index: 10;
+}
+
+.produto-container,
+footer,
+section,
+div {
+    position: relative;
+    z-index: 1;
+}
+/* ======== CORREÇÃO: evitar header cobrindo conteúdo ======== */
+
+/* variável usada para "empurrar" conteúdo abaixo do header */
+:root {
+  --header-offset: 0px;
+}
+
+/* garante que o header fique normal mas não cubra conteúdo sem espaço */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* mantém header visível, mas layout abaixo respeitará a variável */
+  /* não modificar pointer-events aqui — queremos header clicável normalmente */
+}
+
+/* aplica espaço no topo igual à altura real do header */
+.produto-container,
+.produtos-relacionados,
+.breadcrumb,
+.main-content, /* caso você tenha wrapper principal com outra classe */
+section {
+  margin-top: var(--header-offset);
+}
+
+/* Garantir que links-botão sejam clicáveis e com aparência de botão */
+.btn-adicionar,
+.btn-link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+/* segurança adicional: qualquer overlay visível (debug) */
+/* descomente durante debug para ver área do header: */
+/*
+header { outline: 2px dashed rgba(193,142,63,0.25); }
+*/
