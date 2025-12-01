@@ -340,7 +340,8 @@ nav {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   height: fit-content;
-  /* sticky: top; */
+  position: sticky;
+  top: 100px;
 }
 
 .summary-title {
@@ -399,16 +400,48 @@ nav {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  font-family: "Georgia", serif;
 }
 
 .discount-input button:hover {
   background: var(--primary);
 }
 
+/* WhatsApp Info Box */
+.whatsapp-info {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 25px 0;
+  color: white;
+}
+
+.whatsapp-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.whatsapp-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .checkout-btn {
   width: 100%;
   padding: 18px;
-  background: var(--primary);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: var(--white);
   border: none;
   border-radius: 5px;
@@ -419,12 +452,13 @@ nav {
   letter-spacing: 1px;
   transition: all 0.3s;
   margin-top: 20px;
+  font-family: "Georgia", serif;
 }
 
 .checkout-btn:hover {
-  background: #a67a35;
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(193, 142, 63, 0.4);
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
 }
 
 .continue-shopping {
@@ -443,6 +477,7 @@ nav {
   text-decoration: none;
   display: block;
   text-align: center;
+  font-family: "Georgia", serif;
 }
 
 .continue-shopping:hover {
@@ -601,5 +636,34 @@ footer {
 
   .cart-header h1 {
     font-size: 24px;
+  }
+
+  .quantity-control {
+    padding: 5px 10px;
+  }
+
+  .item-total {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .cart-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .cart-header h1 {
+    font-size: 20px;
+  }
+
+  .security-badges {
+    flex-direction: column;
+    gap: 15px;
   }
 }

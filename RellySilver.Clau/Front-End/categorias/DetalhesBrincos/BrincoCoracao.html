@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliança Romance em Prata 925 - Relli Silver</title>
+    <link rel="stylesheet" href="Brincos.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="top-bar">
+            ✨ Frete Grátis para compras acima de R$ 500 | Parcele em até 12x sem juros
+        </div>
+        <nav>
+            <div class="logo">RELLI SILVER</div>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Início</a></li>
+                <li><a href="../../index.html#colecoes">Coleções</a></li>
+                <li><a href="../../index.html#produtos">Produtos</a></li>
+                <li><a href="../../index.html#sobre">Sobre</a></li>
+                <li><a href="../../index.html#contato">Contato</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn">🔍</button>
+                <a href="../../carrinho.html" class="icon-btn">
+                    🛒 <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="../../index.html">Início</a> / 
+        <a href="../brincos.html">Brinco</a> / 
+        <span>Brinco Romance em Prata 925 e Ouro Amarelo 18k com Diamante</span>
+    </div>
+
+    <!-- PRODUTO -->
+    <div class="produto-container">
+        
+        <!-- IMAGEM -->
+        <div class="produto-imagem">
+            <img src="../img/BrincoCoracao.jpg" 
+                 alt="Brinco Romance" 
+                 class="produto-img">
+            <button class="favorito-btn">♡</button>
+        </div>
+
+        <!-- INFORMAÇÕES -->
+        <div class="produto-info-detalhes">
+            <p class="colecao">Coleção Romance</p>
+            <h1 class="produto-titulo">Brinco Romance em Prata 925 e Ouro Amarelo 18k com Diamante</h1>
+            
+            <p class="produto-preco">R$ 1.990,00</p>
+            <p class="produto-parcelas">10x sem juros de R$ 199,00</p>
+            
+            <div class="giftback">
+                <span>💎 Ganhe R$ 199,00 em cashback na próxima compra</span>
+            </div>
+
+            <!-- ARO -->
+            <div class="tamanho-selector">
+                <label>Escolha o tamanho do aro</label>
+                <select class="select-aro">
+                    <option value="">Selecione</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                </select>
+                <a href="#" class="guia-tamanhos">📏 Guia de tamanhos</a>
+            </div>
+
+            <!-- QUANTIDADE -->
+            <div class="quantidade">
+                <label>Quantidade</label>
+                <div class="quantidade-controls">
+                    <button class="btn-qtd" onclick="decrementar()">−</button>
+                    <input type="number" value="1" min="1" class="input-qtd" id="qtd">
+                    <button class="btn-qtd" onclick="incrementar()">+</button>
+                </div>
+            </div>
+
+            <!-- BOTÃO ADICIONAR -->
+                <a href="../../carrinho.html" class="btn-adicionar btn-link">Adicionar ao Carrinho</a>
+            <!-- FRETE -->
+            <div class="frete-info">
+                <p><strong>📦 Calcular Frete e Prazo</strong></p>
+                <div class="frete-input-group">
+                    <input type="text" placeholder="Digite seu CEP" class="input-cep" maxlength="9">
+                    <button class="btn-cep">Calcular</button>
+                </div>
+            </div>
+
+            <!-- DETALHES -->
+            <div class="detalhes-produto">
+                <h3>✨ Detalhes do Produto</h3>
+                <ul>
+                    <li><strong>Material:</strong> Prata 925 e Ouro Amarelo 18k</li>
+                    <li><strong>Pedra:</strong> Diamante natural</li>
+                    <li><strong>Largura:</strong> 3mm</li>
+                    <li><strong>Acabamento:</strong> Polido de alta qualidade</li>
+                    <li><strong>Coleção:</strong> Romance</li>
+                    <li><strong>Garantia:</strong> 1 ano contra defeitos de fabricação</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PRODUTOS RELACIONADOS -->
+    <section class="produtos-relacionados">
+        <h2>Você também pode gostar</h2>
+        <div class="produtos-grid">
+            <div class="produto-card-mini">
+                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400" alt="Produto">
+                <h4>Anel Solitário</h4>
+                <p class="preco-mini">R$ 899,00</p>
+            </div>
+            <div class="produto-card-mini">
+                <img src="https://images.unsplash.com/photo-1603561596112-0a132b757442?w=400" alt="Produto">
+                <h4>Aliança Clássica</h4>
+                <p class="preco-mini">R$ 1.299,00</p>
+            </div>
+            <div class="produto-card-mini">
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400" alt="Produto">
+                <h4>Anel Infinity</h4>
+                <p class="preco-mini">R$ 749,00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RELLI SILVER</h3>
+                <p>Joalheria de luxo com tradição e qualidade desde 1993.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (11) 3456-7890</p>
+                <p>📧 contato@rellisilver.com.br</p>
+                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Atendimento</h3>
+                <p>Segunda a Sexta: 9h às 18h</p>
+                <p>Sábado: 10h às 16h</p>
+                <p>Whatsapp: (11) 98765-4321</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">Formas de Pagamento</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Relli Silver. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function incrementar() {
+            const input = document.getElementById('qtd');
+            input.value = parseInt(input.value) + 1;
+        }
+        
+        function decrementar() {
+            const input = document.getElementById('qtd');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
+
+</body>
+</html>
