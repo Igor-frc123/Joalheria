@@ -91,7 +91,10 @@
             </div>
 
             <!-- BOTÃO ADICIONAR -->
-                <a href="../../carrinho.html" class="btn-adicionar btn-link">Adicionar ao Carrinho</a>
+             <button class="btn-adicionar" onclick="adicionarCarrinho()">
+    Adicionar ao Carrinho
+</button>
+
             <!-- FRETE -->
             <div class="frete-info">
                 <p><strong>📦 Calcular Frete e Prazo</strong></p>
@@ -171,19 +174,7 @@
         </div>
     </footer>
 
-    <script>
-        function incrementar() {
-            const input = document.getElementById('qtd');
-            input.value = parseInt(input.value) + 1;
-        }
-        
-        function decrementar() {
-            const input = document.getElementById('qtd');
-            if (parseInt(input.value) > 1) {
-                input.value = parseInt(input.value) - 1;
-            }
-        }
-    </script>
+
 
 </body>
 </html>
