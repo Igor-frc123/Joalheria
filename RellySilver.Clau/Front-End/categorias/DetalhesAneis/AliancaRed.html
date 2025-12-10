@@ -91,7 +91,7 @@
             </div>
 
             <!-- BOTÃO ADICIONAR -->
-            <a href="../../carrinho.html" class="btn-adicionar btn-link">Adicionar ao Carrinho</a>
+             <button class="btn-adicionar" onclick="addToCart()">Adicionar ao Carrinho</button>
 
             <!-- FRETE -->
             <div class="frete-info">
@@ -172,6 +172,30 @@
         </div>
     </footer>
 
+<script>
+function addToCart() {
+    const name = document.querySelector(".produto-titulo").textContent;
+    const priceText = document.querySelector(".produto-preco").textContent.replace("R$", "").replace(".", "").replace(",", ".");
+    const price = parseFloat(priceText);
+    const image = document.querySelector(".produto-img").src;
+    const size = document.querySelector(".select-aro").value;
+    const quantity = parseInt(document.getElementById("qtd").value);
+
+    if (!size) {
+        alert("Por favor, escolha o tamanho do aro.");
+        return;
+    }
+
+    const product = { name, price, image, size, quantity };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    window.location.href = "../../carrinho.html";
+}
+</script>
 
 
 </body>
