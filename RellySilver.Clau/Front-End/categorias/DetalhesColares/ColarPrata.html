@@ -61,24 +61,7 @@
                 <span>💎 Ganhe R$ 199,00 em cashback na próxima compra</span>
             </div>
 
-            <!-- ARO -->
-            <div class="tamanho-selector">
-                <label>Escolha o tamanho do aro</label>
-                <select class="select-aro">
-                    <option value="">Selecione</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                </select>
-                <a href="#" class="guia-tamanhos">📏 Guia de tamanhos</a>
-            </div>
+        
 
             <!-- QUANTIDADE -->
             <div class="quantidade">
@@ -91,7 +74,7 @@
             </div>
 
             <!-- BOTÃO ADICIONAR -->
-              <a href="../../carrinho.html" class="btn-adicionar btn-link">Adicionar ao Carrinho</a>
+              <button class="btn-adicionar" onclick="addToCart()">Adicionar ao Carrinho</button>
 
             <!-- FRETE -->
             <div class="frete-info">
@@ -172,6 +155,45 @@
         </div>
     </footer>
 
-   
+ <script>
+function incrementar() {
+    let qtd = document.getElementById("qtd");
+    qtd.value = parseInt(qtd.value) + 1;
+}
+
+function decrementar() {
+    let qtd = document.getElementById("qtd");
+    if (parseInt(qtd.value) > 1) {
+        qtd.value = parseInt(qtd.value) - 1;
+    }
+}
+
+function addToCart() {
+    const name = document.querySelector(".produto-titulo").textContent;
+
+    const priceText = document.querySelector(".produto-preco")
+        .textContent
+        .replace("R$", "")
+        .replace(".", "")
+        .replace(",", ".");
+    const price = parseFloat(priceText);
+
+    const image = document.querySelector(".produto-img").src;
+    const quantity = parseInt(document.getElementById("qtd").value);
+
+    const size = "Único"; // Produto sem tamanho
+
+    const product = { name, price, image, size, quantity };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    window.location.href = "../../carrinho.html";
+}
+</script>
+
+
 </body>
 </html>

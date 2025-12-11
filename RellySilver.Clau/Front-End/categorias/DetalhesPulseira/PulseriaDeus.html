@@ -61,25 +61,6 @@
                 <span>💎 Ganhe R$ 199,00 em cashback na próxima compra</span>
             </div>
 
-            <!-- ARO -->
-            <div class="tamanho-selector">
-                <label>Escolha o tamanho do aro</label>
-                <select class="select-aro">
-                    <option value="">Selecione</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                </select>
-                <a href="#" class="guia-tamanhos">📏 Guia de tamanhos</a>
-            </div>
-
             <!-- QUANTIDADE -->
             <div class="quantidade">
                 <label>Quantidade</label>
@@ -91,7 +72,7 @@
             </div>
 
             <!-- BOTÃO ADICIONAR -->
-              <a href="../../carrinho.html" class="btn-adicionar btn-link">Adicionar ao Carrinho</a>
+              <button class="btn-adicionar" onclick="addToCart()">Adicionar ao Carrinho</button>
 
             <!-- FRETE -->
             <div class="frete-info">
@@ -171,6 +152,86 @@
             <p>&copy; 2025 Relli Silver. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+
+<script>
+/* ======= Funções de quantidade (botões + / -) ======= */
+function incrementar() {
+  const el = document.getElementById("qtd");
+  el.value = Math.max(1, parseInt(el.value || 1) + 1);
+}
+function decrementar() {
+  const el = document.getElementById("qtd");
+  el.value = Math.max(1, parseInt(el.value || 1) - 1);
+}
+
+/* ======= Função para atualizar contador do ícone de carrinho ======= */
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+  document.querySelectorAll(".cart-count").forEach(el => el.textContent = count);
+}
+
+/* ======= Adicionar ao carrinho ======= */
+function addToCart() {
+  try {
+    const name = (document.querySelector(".produto-titulo")?.textContent || "").trim();
+
+    // Trata o preço com mais segurança (remove tudo não numérico exceto , e .)
+    let priceRaw = document.querySelector(".produto-preco")?.textContent || "0";
+    // remove "R$", espaços e caracteres extras
+    priceRaw = priceRaw.replace(/[^\d,\.]/g, "").trim();
+
+    // Se preço tiver separador de milhares como ponto e decimal como vírgula (ex: 1.990,00)
+    // transformamos: remover pontos, trocar vírgula por ponto
+    if (priceRaw.indexOf(",") > -1 && priceRaw.indexOf(".") > -1) {
+      priceRaw = priceRaw.replace(/\./g, "").replace(",", ".");
+    } else {
+      // trocas genéricas que cobrem os casos
+      priceRaw = priceRaw.replace(",", ".");
+    }
+
+    const price = parseFloat(priceRaw) || 0;
+    const image = document.querySelector(".produto-img")?.src || "";
+    const quantity = Math.max(1, parseInt(document.getElementById("qtd")?.value || 1));
+
+    // Se existir select de tamanho (aro), pega o valor, senão deixa "Único"
+    const sizeEl = document.querySelector(".select-aro");
+    const size = sizeEl ? (sizeEl.value || "Único") : "Único";
+
+    // validações simples
+    if (!name) { alert("Erro: produto sem nome."); return; }
+    if (price <= 0) { /* apenas aviso, mas permite */ console.warn("Preço parece inválido:", priceRaw); }
+
+    const product = { name, price, image, size, quantity };
+
+    // pega carrinho e agrupa itens iguais (mesmo nome + tamanho)
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const sameIndex = cart.findIndex(it => it.name === product.name && (it.size || "Único") === product.size);
+    if (sameIndex > -1) {
+      cart[sameIndex].quantity = (cart[sameIndex].quantity || 0) + product.quantity;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // atualiza contador na página atual (útil quando volta ao index antes de abrir o carrinho)
+    updateCartCount();
+
+    // redireciona para a página do carrinho
+    window.location.href = "../../carrinho.html";
+  } catch (err) {
+    console.error("Erro em addToCart:", err);
+    alert("Ocorreu um erro ao adicionar ao carrinho. Abra o console para detalhes.");
+  }
+}
+
+/* Inicializa contador ao carregar a página (caso já existam itens) */
+updateCartCount();
+</script>
+
 
 </body>
 </html>

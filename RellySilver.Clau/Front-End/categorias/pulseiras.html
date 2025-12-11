@@ -56,5 +56,24 @@
 
 </section>
 
+<script>
+function atualizarCarrinhoIcone() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = 0;
+
+    // Somar todas as quantidades dos itens do carrinho
+    cart.forEach(item => {
+        total += item.quantity;
+    });
+
+    // Atualizar o número no ícone
+    document.querySelector(".cart-count").textContent = total;
+}
+
+// Atualiza assim que a página carregar
+atualizarCarrinhoIcone();
+</script>
+
+
 </body>
 </html>

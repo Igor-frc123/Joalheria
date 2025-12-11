@@ -93,6 +93,7 @@
             <!-- BOTÃO ADICIONAR -->
              <button class="btn-adicionar" onclick="addToCart()">Adicionar ao Carrinho</button>
 
+
             <!-- FRETE -->
             <div class="frete-info">
                 <p><strong>📦 Calcular Frete e Prazo</strong></p>
@@ -172,30 +173,82 @@
         </div>
     </footer>
 
-<script>
+    <script>
+/* ======= Funções de quantidade (botões + / -) ======= */
+function incrementar() {
+  const el = document.getElementById("qtd");
+  el.value = Math.max(1, parseInt(el.value || 1) + 1);
+}
+function decrementar() {
+  const el = document.getElementById("qtd");
+  el.value = Math.max(1, parseInt(el.value || 1) - 1);
+}
+
+/* ======= Atualizar contador do carrinho ======= */
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+  document.querySelectorAll(".cart-count").forEach(el => el.textContent = count);
+}
+
+/* ======= Função ADD TO CART ======= */
 function addToCart() {
-    const name = document.querySelector(".produto-titulo").textContent;
-    const priceText = document.querySelector(".produto-preco").textContent.replace("R$", "").replace(".", "").replace(",", ".");
-    const price = parseFloat(priceText);
+  try {
+    const name = document.querySelector(".produto-titulo").textContent.trim();
+
+    // TRATAMENTO DE PREÇO
+    let priceRaw = document.querySelector(".produto-preco").textContent;
+    priceRaw = priceRaw.replace(/[^\d,\.]/g, "").trim();
+
+    if (priceRaw.indexOf(",") > -1 && priceRaw.indexOf(".") > -1) {
+      priceRaw = priceRaw.replace(/\./g, "").replace(",", ".");
+    } else {
+      priceRaw = priceRaw.replace(",", ".");
+    }
+
+    const price = parseFloat(priceRaw);
+
     const image = document.querySelector(".produto-img").src;
+    const quantity = Math.max(1, parseInt(document.getElementById("qtd").value || 1));
+
+    // PEGAR TAMANHO DO ARO
     const size = document.querySelector(".select-aro").value;
-    const quantity = parseInt(document.getElementById("qtd").value);
 
     if (!size) {
-        alert("Por favor, escolha o tamanho do aro.");
-        return;
+      alert("Por favor, selecione o tamanho do aro antes de adicionar ao carrinho.");
+      return;
     }
 
     const product = { name, price, image, size, quantity };
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(product);
+
+    const sameIndex = cart.findIndex(
+      it => it.name === product.name && it.size === product.size
+    );
+
+    if (sameIndex > -1) {
+      cart[sameIndex].quantity += product.quantity;
+    } else {
+      cart.push(product);
+    }
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
+    updateCartCount();
+
     window.location.href = "../../carrinho.html";
+
+  } catch (err) {
+    console.error("Erro em addToCart:", err);
+    alert("Ocorreu um erro ao adicionar ao carrinho.");
+  }
 }
+
+updateCartCount();
 </script>
+
+
 
 
 </body>
